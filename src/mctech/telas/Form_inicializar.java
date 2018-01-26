@@ -5,8 +5,10 @@
  */
 package mctech.telas;
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+
 
 /**
  *
@@ -14,10 +16,22 @@ import java.util.TimerTask;
  */
 public class Form_inicializar extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Form_inicializar
-     */
+    private Timer time;
+    private final ActionListener al;
+    
     public Form_inicializar() {
+        al = new ActionListener(){
+            public void ActionPerfomed(ActionEvent ae){
+                if(Barra_ini.getValue() < 100){
+                    Barra_ini.setValue(Barra_ini.getValue() + 1);
+                }else{
+                    time.stop();
+                    //Form_login.
+                }
+            }
+        };
+        
+        time = new Timer(100, al);
         initComponents();
     }
 
@@ -68,23 +82,7 @@ public class Form_inicializar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        int delay = 10000;   // delay de 5 seg.
-        int interval = 100;  // intervalo de 1 seg.
-
-        Timer timer = new Timer();
-    
-        timer.scheduleAtFixedRate(new TimerTask() {
-            public void run() {
- 
-               Barra_ini.setValue(Barra_ini.getValue()+1);
-               jLabel1.setText(Barra_ini.getString());
-               if(Barra_ini.getValue() == 100){
-                   Form_login login = new Form_login();
-                    login.setVisible(true);
-                    timer.cancel();
-                }
-            }
-        }, delay, interval);
+        time.start();
     }//GEN-LAST:event_formWindowActivated
 
     /**
@@ -116,6 +114,7 @@ public class Form_inicializar extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new Form_inicializar().setVisible(true);
             }
