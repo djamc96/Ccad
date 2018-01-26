@@ -16,22 +16,26 @@ import javax.swing.Timer;
  */
 public class Form_inicializar extends javax.swing.JFrame {
 
-    private Timer time;
-    private final ActionListener al;
+    private Timer time = null;
     
-    public Form_inicializar() {
-        al = new ActionListener(){
-            public void ActionPerfomed(ActionEvent ae){
-                if(Barra_ini.getValue() < 100){
-                    Barra_ini.setValue(Barra_ini.getValue() + 1);
-                }else{
-                    time.stop();
-                    //Form_login.
-                }
-            }
-        };
+    
+    public Form_inicializar() {       
+        time = new Timer(100, new ActionListener(){
         
-        time = new Timer(100, al);
+        @Override
+        public void actionPerformed(ActionEvent e){
+            if(Barra_ini.getValue() < 100){
+                Barra_ini.setValue(Barra_ini.getValue() + 1);
+            }
+            else{
+                time.stop();
+                Form_login login = new Form_login();
+                login.show();
+                dispose();
+            }
+        }
+    }
+    );
         initComponents();
     }
 
@@ -45,9 +49,8 @@ public class Form_inicializar extends javax.swing.JFrame {
     private void initComponents() {
 
         Barra_ini = new javax.swing.JProgressBar();
-        jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
@@ -57,28 +60,21 @@ public class Form_inicializar extends javax.swing.JFrame {
 
         Barra_ini.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Barra_ini, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(201, 201, 201)
-                .addComponent(jLabel1)
-                .addContainerGap(293, Short.MAX_VALUE))
+            .addComponent(Barra_ini, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                .addComponent(Barra_ini, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 248, Short.MAX_VALUE)
+                .addComponent(Barra_ini, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
@@ -123,7 +119,6 @@ public class Form_inicializar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar Barra_ini;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
 
