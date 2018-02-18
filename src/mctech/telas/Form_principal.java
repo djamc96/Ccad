@@ -6,6 +6,9 @@
 package mctech.telas;
 
 import java.awt.Color;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -57,6 +60,7 @@ public class Form_principal extends javax.swing.JFrame {
         btn_user = new javax.swing.JPanel();
         l_user = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        Desktop = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -202,6 +206,9 @@ public class Form_principal extends javax.swing.JFrame {
         btn_add_func.setBackground(java.awt.Color.gray);
         btn_add_func.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_add_func.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_add_funcMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_add_funcMouseExited(evt);
             }
@@ -459,7 +466,7 @@ public class Form_principal extends javax.swing.JFrame {
                     .addComponent(jSeparator1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_pesq, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 217, Short.MAX_VALUE)
                 .addComponent(btn_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -486,22 +493,35 @@ public class Form_principal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Desktop)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Desktop))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    //Declaração dos forms
+    Form_int_inicio inicio = new Form_int_inicio();
+    Form_int_func func = new Form_int_func();
+    
     private void btn_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_inicioMouseClicked
-        // TODO add your handling code here:
-        btn_atalho.setVisible(false);
+        inicio.setVisible(true);
+        func.dispose();
+        Desktop.add(inicio);
+        try {
+            inicio.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Form_int_inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_inicioMouseClicked
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -509,7 +529,15 @@ public class Form_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        //Abre o forme interno inicio dentro da janela principal
         p_add.setVisible(false);
+        inicio.setVisible(true);
+        Desktop.add(inicio);
+        try {
+            inicio.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Form_int_inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_formWindowActivated
 
     private void btn_addMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_addMouseEntered
@@ -588,6 +616,17 @@ public class Form_principal extends javax.swing.JFrame {
         btn_user.setBackground(Color.GRAY);
     }//GEN-LAST:event_btn_userMouseExited
 
+    private void btn_add_funcMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_funcMouseClicked
+        func.setVisible(true);
+        inicio.dispose();
+        Desktop.add(func);
+        try {
+            func.setMaximum(true);
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(Form_int_inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btn_add_funcMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -624,6 +663,7 @@ public class Form_principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane Desktop;
     private javax.swing.JPanel btn_add;
     private javax.swing.JPanel btn_add_comp;
     private javax.swing.JPanel btn_add_func;
