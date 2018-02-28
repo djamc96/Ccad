@@ -64,6 +64,9 @@ public class Form_principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
@@ -506,7 +509,7 @@ public class Form_principal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setBounds(0, 0, 1070, 639);
     }// </editor-fold>//GEN-END:initComponents
     
     //Declaração dos forms
@@ -531,6 +534,7 @@ public class Form_principal extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         //Abre o forme interno inicio dentro da janela principal
         p_add.setVisible(false);
+        
         inicio.setVisible(true);
         Desktop.add(inicio);
         try {
@@ -627,6 +631,10 @@ public class Form_principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_add_funcMouseClicked
 
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
+
     /**
      * @param args the command line arguments
      */
@@ -693,4 +701,6 @@ public class Form_principal extends javax.swing.JFrame {
     private javax.swing.JLabel l_user;
     private javax.swing.JPanel p_add;
     // End of variables declaration//GEN-END:variables
+
+
 }
