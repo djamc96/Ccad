@@ -6,6 +6,8 @@
 package mctech.telas;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.beans.PropertyVetoException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -22,6 +24,8 @@ public class Form_principal extends javax.swing.JFrame {
     public Form_principal() {
         initComponents();
     }
+    Toolkit kit = Toolkit.getDefaultToolkit();  
+    Dimension tamTela = kit.getScreenSize();  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -164,6 +168,9 @@ public class Form_principal extends javax.swing.JFrame {
         btn_add_user.setBackground(java.awt.Color.gray);
         btn_add_user.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_add_user.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_add_userMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_add_userMouseExited(evt);
             }
@@ -252,6 +259,9 @@ public class Form_principal extends javax.swing.JFrame {
         btn_add_comp.setBackground(java.awt.Color.gray);
         btn_add_comp.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_add_comp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_add_compMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_add_compMouseExited(evt);
             }
@@ -533,8 +543,15 @@ public class Form_principal extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         //Abre o forme interno inicio dentro da janela principal
-        p_add.setVisible(false);
         
+
+ 
+        int larg = tamTela.width;  
+        int alt = tamTela.height;  
+
+        //Manda o JFrame utilizar suas dimensões  
+        setSize(larg,alt); 
+        p_add.setVisible(false);
         inicio.setVisible(true);
         Desktop.add(inicio);
         try {
@@ -629,11 +646,20 @@ public class Form_principal extends javax.swing.JFrame {
         } catch (PropertyVetoException ex) {
             Logger.getLogger(Form_int_inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
+        p_add.setVisible(false);
     }//GEN-LAST:event_btn_add_funcMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
+
+    private void btn_add_userMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_userMouseClicked
+        p_add.setVisible(false);
+    }//GEN-LAST:event_btn_add_userMouseClicked
+
+    private void btn_add_compMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_add_compMouseClicked
+        p_add.setVisible(false);
+    }//GEN-LAST:event_btn_add_compMouseClicked
 
     /**
      * @param args the command line arguments
@@ -701,6 +727,8 @@ public class Form_principal extends javax.swing.JFrame {
     private javax.swing.JLabel l_user;
     private javax.swing.JPanel p_add;
     // End of variables declaration//GEN-END:variables
+
+
 
 
 }

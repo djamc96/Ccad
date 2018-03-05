@@ -713,7 +713,7 @@ public class Form_int_func extends javax.swing.JInternalFrame {
                     .addComponent(jLabel45)
                     .addComponent(txt_cep, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(132, 132, 132))
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, p_resiLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_prox_recid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -995,7 +995,7 @@ public class Form_int_func extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26))
         );
 
-        setBounds(0, 0, 1000, 1120);
+        setBounds(0, 0, 1000, 530);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cb_est_civilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_est_civilActionPerformed
