@@ -107,7 +107,6 @@ public class Form_login extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 20));
 
         btn_fechar.setBackground(new java.awt.Color(10, 3, 3));
-        btn_fechar.setBorder(null);
         btn_fechar.setForeground(new java.awt.Color(15, 11, 11));
         btn_fechar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseReleased(java.awt.event.MouseEvent evt) {
@@ -218,7 +217,7 @@ public class Form_login extends javax.swing.JFrame {
                             .addComponent(jTextField1)
                             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jSeparator2)
-                            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                            .addComponent(jSeparator3)
                             .addComponent(jTextField2))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
